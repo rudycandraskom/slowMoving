@@ -7,11 +7,12 @@ function getMasterBarang(namaFile) {
 }
 
 function castingMasterBarang(jsonMentah) {
+    var element = jsonMentah;
     for (let i = 0; i < jsonMentah.length; i++) {
-        let element = array[i];
-        
+        element[i].isiPerBox = parseInt(element[i].isiPerBox);
+        element[i].sisaStok = parseInt(element[i].sisaStok);
     }
-    return 
+    return element;
 }
 
 
