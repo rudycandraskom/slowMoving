@@ -10,7 +10,14 @@
 
 const fs = require("fs");
 const { getMasterBarang } = require("./modules/getMasterBarang");
+const { getListBM } = require("./modules/getListBM");
+const { getBarangLengkap } = require("./modules/getBarangLengkap");
+const { getBarangSlowMoving } = require("./modules/getBarangSM");
 
 const masterBarang = getMasterBarang("./input/masterBarang.csv");
+const listBM = getListBM("./input/listBM.csv");
 
-console.log(masterBarang);
+const barangLengkap = getBarangLengkap(masterBarang, listBM);
+// const barangSlowMoving = getBarangSlowMoving(masterBarang, listBM)
+console.log("Total Stok = " + barangLengkap[0].sisaStok)
+console.table(barangLengkap[0].batch);
