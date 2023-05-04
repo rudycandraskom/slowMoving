@@ -1,23 +1,14 @@
-function getBarangSlowMoving(master, listBM) {
-    master.map(value => {
-        let kodeBatch = [];
-        for (let i = 0; i < listBM.length; i++) {
-            if (value.kodeBarang == listBM[i].kodeBarang) {
-                kodeBatch.push({
-                    nomorBM: listBM[i].nomorBM,
-                    tanggalBM: listBM[i].tanggalBM,
-                    rollBM: listBM[i].rollBM
-                });
-            }
-        }
-        kodeBatch.filter(nilai => {
-            return nilai.tanggalBM < new Date("2022-10-30")
-        })
-        // console.table(kodeBatch);
-        value.batch = kodeBatch;
-        return value;
+function getBarangSlowMoving(listBarang) {
+    let listBarangSM = listBarang.map(filterBatch).filter(value => value.batch.length > 0)
+    return listBarangSM;
+}
+
+function filterBatch(itemBarang) {
+    let batch = itemBarang.batch.filter(a => {
+        return a.umurBMinBln > itemBarang.maxAge;
     })
-    // return master;
+    itemBarang.batch = batch;
+    return itemBarang;
 }
 
 module.exports = { getBarangSlowMoving };

@@ -11,7 +11,6 @@ function castingMasterBarang(jsonMentah) {
     for (let i = 0; i < jsonMentah.length; i++) {
         element[i].isiPerBox = parseInt(element[i].isiPerBox);
         element[i].maxAge = parseInt(element[i].maxAge);
-        element[i].isSlow = (/true/).test(element[i].isSlow.toLowerCase());
         element[i].sisaStok = parseInt(element[i].sisaStok);
     }
     return element;
@@ -27,8 +26,6 @@ function getStok(masterBarang) {
         }
     })
     return masterBarang;
-
 }
-
 
 module.exports = { getMasterBarang };

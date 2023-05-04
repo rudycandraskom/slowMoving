@@ -14,4 +14,5 @@ function castingListBM(jsonMentah) {
     }
     return element.reverse();
 }
+
 module.exports = { getListBM };
